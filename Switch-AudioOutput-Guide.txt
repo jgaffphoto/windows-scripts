@@ -1,0 +1,237 @@
+SWITCH AUDIO OUTPUT - INSTALLATION AND USAGE GUIDE
+====================================================
+
+This guide explains how to install and use Switch-AudioOutput.ps1, a tool
+that switches your computer's sound between the 3.5 mm headphone jack and
+the speakers.
+
+This guide is written for use with JAWS and a Braille keyboard. Every step
+uses only the keyboard. There are no steps that require a mouse, and there
+are no popup windows to deal with. Everything the tool tells you is plain
+text, so JAWS will read it and it will show correctly on a Braille display.
+
+
+SECTION 1: WHAT YOU NEED BEFORE YOU START
+====================================================
+
+1. A Windows computer running Windows 10 or Windows 11.
+
+2. Internet access, but only for the very first time you run the tool. It
+   needs the internet once to install one small helper component. After
+   that first run, you do not need internet access to use it.
+
+3. The two files that make up this tool:
+   Switch-AudioOutput.ps1
+   README.md
+
+   If someone sent you these files, keep them together in the same folder.
+
+
+SECTION 2: INSTALLATION
+====================================================
+
+Step 1. Choose a folder for the tool.
+
+   A simple, easy to find location works well. One option is to create a
+   folder directly on your desktop named AudioSwitcher.
+
+   To create it with the keyboard in File Explorer:
+   Press Windows key plus E to open File Explorer.
+   Press Ctrl plus Shift plus N to create a new folder.
+   Type the name AudioSwitcher and press Enter.
+
+Step 2. Put both files into that folder.
+
+   Copy Switch-AudioOutput.ps1 and README.md into the AudioSwitcher folder
+   you just made. If the files arrived as an email attachment or a
+   download, move them from your Downloads folder into AudioSwitcher.
+
+Step 3. Unblock the script file.
+
+   Windows sometimes marks files downloaded from the internet or email as
+   blocked, which can stop the script from running. To remove this mark:
+
+   In File Explorer, move to the Switch-AudioOutput.ps1 file so it is
+   selected.
+   Open the context menu with the Menu key, or with Shift plus F10.
+   Choose Properties and press Enter.
+   In the Properties window, Tab through the fields until you reach a
+   checkbox labeled Unblock. If you find it, press Space to check it.
+   Tab to the OK button and press Enter.
+
+   If you do not find an Unblock checkbox, the file was not blocked and
+   you can continue to the next step.
+
+Step 4. Run the tool for the first time.
+
+   Press Windows key plus R to open the Run dialog.
+   Type powershell and press Enter. This opens a PowerShell window.
+   In the PowerShell window, type the following line and press Enter.
+   Replace the folder path if you used a different location.
+
+   powershell -ExecutionPolicy Bypass -File "C:\Users\YourName\Desktop\AudioSwitcher\Switch-AudioOutput.ps1" -ListDevices
+
+   The first time this runs, it will announce that it needs to install a
+   helper component called AudioDeviceCmdlets, and it will do this
+   automatically. Wait for it to say Module installed successfully. This
+   only happens once.
+
+   After that, it will read out a list of your playback devices, for
+   example:
+
+   Playback devices known to Windows:
+   1. Speakers (Realtek Audio) (currently default)
+   2. Headphones (Realtek Audio)
+
+   Listen for, or read on your Braille display, the exact names of your
+   jack and speaker devices. Usually the jack device has the word
+   Headphones in its name, and the speaker device has the word Speakers in
+   its name. Note the exact wording if it is different on your computer.
+
+Step 5. Tell the tool which device is which, if needed.
+
+   If your device names already contain the words Headphones and Speakers,
+   you can skip this step, since those are the tool's default names.
+
+   If your device names are different, run this line once, typing the
+   exact text you noted in Step 4 in place of the example words:
+
+   powershell -ExecutionPolicy Bypass -File "C:\Users\YourName\Desktop\AudioSwitcher\Switch-AudioOutput.ps1" -JackDeviceName "Headphones" -SpeakerDeviceName "Speakers" -Status
+
+   The tool remembers these names after this, so you will not need to type
+   them again.
+
+Installation is now complete.
+
+
+SECTION 3: EVERYDAY USE
+====================================================
+
+There are two ways to use the tool day to day: an interactive menu, and
+direct one-line commands. Use whichever is easier for you.
+
+Option A: The interactive menu.
+
+   Open PowerShell as described in Step 4 above, then type this line and
+   press Enter, using your own folder path:
+
+   powershell -ExecutionPolicy Bypass -File "C:\Users\YourName\Desktop\AudioSwitcher\Switch-AudioOutput.ps1"
+
+   You will see and hear a menu like this:
+
+   Audio Output Switcher
+   1. Switch to 3.5 mm jack
+   2. Switch to speakers
+   3. Toggle between the two
+   4. Announce current output device
+   5. List all playback devices
+   6. Set which device names to use for jack and speakers
+   Q. Quit
+
+   Type the number or letter for what you want, then press Enter. For
+   example, type 3 and press Enter to flip between the jack and the
+   speakers. The tool will confirm what happened in a plain sentence, for
+   example: Audio output switched to: Headphones (Realtek Audio). You will
+   also hear a short confirmation tone: a low tone for the jack, a high
+   tone for the speakers.
+
+   When you are done, type Q and press Enter to close the tool.
+
+Option B: Direct one-line commands.
+
+   These skip the menu completely and do one thing immediately. Open
+   PowerShell and type one of the following, using your own folder path,
+   then press Enter:
+
+   To switch to the jack:
+   powershell -ExecutionPolicy Bypass -File "C:\Users\YourName\Desktop\AudioSwitcher\Switch-AudioOutput.ps1" -Jack
+
+   To switch to the speakers:
+   powershell -ExecutionPolicy Bypass -File "C:\Users\YourName\Desktop\AudioSwitcher\Switch-AudioOutput.ps1" -Speakers
+
+   To flip between whichever is not currently active:
+   powershell -ExecutionPolicy Bypass -File "C:\Users\YourName\Desktop\AudioSwitcher\Switch-AudioOutput.ps1" -Toggle
+
+   To hear which device is currently active, with nothing switched:
+   powershell -ExecutionPolicy Bypass -File "C:\Users\YourName\Desktop\AudioSwitcher\Switch-AudioOutput.ps1" -Status
+
+
+SECTION 4: SETTING UP A ONE-KEY SHORTCUT
+====================================================
+
+You can set up a single keyboard shortcut, for example Ctrl plus Alt plus
+A, that switches your audio with one keystroke, from anywhere on the
+desktop, without opening PowerShell or any menu at all.
+
+Step 1. Create a shortcut.
+
+   In File Explorer, go to your AudioSwitcher folder.
+   Open the context menu with Shift plus F10.
+   Arrow down to New, press Enter, then arrow down to Shortcut and press
+   Enter.
+
+Step 2. Set the shortcut's target.
+
+   In the location box, type the following line, using your own folder
+   path, then press Enter:
+
+   powershell -ExecutionPolicy Bypass -File "C:\Users\YourName\Desktop\AudioSwitcher\Switch-AudioOutput.ps1" -Toggle
+
+   Press Enter again, or Tab to Next and press Enter, to accept the
+   default name for the shortcut, then press Enter or select Finish.
+
+Step 3. Assign the keyboard shortcut key.
+
+   Move to the new shortcut so it is selected.
+   Open its Properties with Shift plus F10, then choose Properties and
+   press Enter.
+   Tab until you reach the field named Shortcut key.
+   With the field focused, press the letter you want to use, for example
+   A. Windows will automatically combine it with Ctrl plus Alt, showing
+   Ctrl plus Alt plus A.
+   Tab to OK and press Enter to save.
+
+   From now on, pressing Ctrl plus Alt plus A anywhere on the desktop will
+   instantly switch your audio output, with a confirmation tone, and no
+   menu or window needed.
+
+
+SECTION 5: TROUBLESHOOTING
+====================================================
+
+If the tool says it could not find a playback device matching a name:
+
+   Run the -ListDevices command from Step 4 of installation again, note
+   the exact device names, and repeat Step 5 with the exact wording.
+
+If the tool says the automatic install of AudioDeviceCmdlets failed:
+
+   This usually means there is no internet connection at that moment.
+   Connect to the internet and try again. If it still fails, ask someone
+   with sighted assistance, or a more experienced PowerShell user, to run
+   this single line in PowerShell on your behalf:
+
+   Install-Module -Name AudioDeviceCmdlets -Scope CurrentUser -Force
+
+If PowerShell refuses to run the script and mentions execution policy:
+
+   Make sure you are typing the full command starting with powershell
+   -ExecutionPolicy Bypass -File, exactly as shown in this guide. This
+   part of the command is what allows this one script to run without
+   changing any other security settings on your computer.
+
+If nothing seems to happen after switching:
+
+   Use the -Status command to confirm what the tool believes the current
+   device is. Some external speakers or headsets take a second or two to
+   switch after Windows changes the setting.
+
+
+SECTION 6: GETTING HELP
+====================================================
+
+If you get stuck at any step, contact the person who gave you this tool
+and read them the exact sentence the tool or PowerShell displayed. Reading
+the exact wording back to them will make it much faster to help you.
+
+End of guide.
