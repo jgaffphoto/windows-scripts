@@ -1,0 +1,157 @@
+CREATING A DESKTOP SHORTCUT FOR SWITCH-AUDIOOUTPUT.PS1
+====================================================
+
+This guide explains how to create a Desktop shortcut, with its own
+keyboard shortcut key, so you can switch your audio output with a single
+keystroke from anywhere on the desktop. It does not require opening
+PowerShell or a menu.
+
+Every step in this guide uses only the keyboard.
+
+Before you begin, make sure Switch-AudioOutput.ps1 has already been
+installed following the separate file Switch-AudioOutput-Guide.txt.
+
+
+CHOOSING WHICH SHORTCUT TO CREATE
+====================================================
+
+You can create one shortcut, or several, depending on what is easiest for
+you to remember:
+
+Toggle shortcut: one key switches between the jack and the speakers,
+whichever is not already active. This is the simplest option if you only
+have two devices and want a single key to flip between them.
+
+Jack shortcut: one key always switches to the 3.5 mm jack, no matter what
+is currently active.
+
+Speakers shortcut: one key always switches to the speakers, no matter what
+is currently active.
+
+Many people create the Jack shortcut and the Speakers shortcut together,
+so each key always does the same thing every time, rather than needing to
+remember which device is currently active before pressing Toggle. The
+steps below are the same for all three; only the command text and the key
+you choose will differ.
+
+
+STEP BY STEP INSTRUCTIONS
+====================================================
+
+Step 1. Open the folder that contains Switch-AudioOutput.ps1.
+
+   Press Windows key plus E to open File Explorer.
+   Navigate to the folder where you installed the tool, for example
+   Desktop, then AudioSwitcher.
+
+Step 2. Start creating a new shortcut.
+
+   With focus inside that folder, open the context menu by pressing
+   Shift plus F10.
+   Arrow down to the item named New and press Enter, or press the Right
+   Arrow key to open its submenu.
+   Arrow down to Shortcut and press Enter.
+
+Step 3. Enter the command for the shortcut to run.
+
+   A dialog box appears asking for the location of the item. Type one of
+   the three command lines below, using your own folder path in place of
+   the example path, then press Enter.
+
+   For a Toggle shortcut:
+   powershell -ExecutionPolicy Bypass -File "C:\Users\YourName\Desktop\AudioSwitcher\Switch-AudioOutput.ps1" -Toggle
+
+   For a Jack-only shortcut:
+   powershell -ExecutionPolicy Bypass -File "C:\Users\YourName\Desktop\AudioSwitcher\Switch-AudioOutput.ps1" -Jack
+
+   For a Speakers-only shortcut:
+   powershell -ExecutionPolicy Bypass -File "C:\Users\YourName\Desktop\AudioSwitcher\Switch-AudioOutput.ps1" -Speakers
+
+Step 4. Name the shortcut.
+
+   Tab to the Next button and press Enter, or press Enter again.
+   Type a clear name so you can identify it later, for example:
+   Switch Audio To Jack
+   or
+   Switch Audio To Speakers
+   or
+   Toggle Audio Output
+   Press Enter, or Tab to Finish and press Enter.
+
+   The new shortcut now appears in the folder.
+
+Step 5. Open the new shortcut's Properties.
+
+   Arrow to the new shortcut so it is selected.
+   Open the context menu with Shift plus F10.
+   Arrow down to Properties and press Enter.
+
+Step 6. Assign a keyboard shortcut key.
+
+   In the Properties window, press Tab repeatedly until focus lands on
+   the field named Shortcut key. This field usually already contains the
+   word None.
+   With that field focused, press a single letter or number key, for
+   example the letter J for a Jack shortcut, or S for a Speakers
+   shortcut. Windows automatically fills in Ctrl plus Alt plus the key
+   you pressed, for example Ctrl plus Alt plus J.
+   If you make a mistake, press the Delete key while the field is focused
+   to clear it, then try again.
+
+Step 7. Save your changes.
+
+   Tab until you reach the OK button and press Enter.
+
+Your shortcut is now active. Test it by pressing the key combination you
+assigned, for example Ctrl plus Alt plus J, from anywhere on the desktop.
+You should hear a confirmation tone and, if a console window is visible,
+a plain text sentence confirming the device that was switched to.
+
+
+CREATING MORE THAN ONE SHORTCUT
+====================================================
+
+Repeat Steps 2 through 7 for each additional shortcut you want, for
+example one for Jack and a separate one for Speakers. Give each one a
+different key so they do not conflict, for example Ctrl plus Alt plus J
+for jack and Ctrl plus Alt plus S for speakers.
+
+
+MOVING A SHORTCUT TO A MORE CONVENIENT LOCATION
+====================================================
+
+If you would rather keep your shortcuts directly on the Desktop instead
+of inside the AudioSwitcher folder, you can move them after creating them:
+
+   Select the shortcut.
+   Press Ctrl plus X to cut it.
+   Press Windows key plus D to show the Desktop.
+   Press Ctrl plus V to paste it there.
+
+The assigned keyboard shortcut key keeps working no matter where the
+shortcut file is moved to.
+
+
+TROUBLESHOOTING
+====================================================
+
+If the Shortcut key field will not accept a letter:
+
+   Make sure you clicked, or tabbed, directly into the text field first,
+   then press the key. Some keys, such as Escape or Tab itself, cannot be
+   used as the shortcut key.
+
+If pressing the key combination does nothing:
+
+   Confirm the exact command text in Step 3 was typed correctly,
+   including the quotation marks around the file path. Reopen the
+   shortcut's Properties, and on the Shortcut tab check the Target field
+   to review the exact command that was saved.
+
+If two shortcuts use the same key combination:
+
+   Only one of them will respond. Open Properties on each shortcut and
+   assign a different letter to each one.
+
+
+End of guide.
